@@ -15,8 +15,8 @@ const selectTab = (tab: string) => {
 </script>
 
 <template>
-  <div class="tabs">
-    <!-- TODO is this the most semantic approach? -->
+  <!-- TODO is this the most semantic approach? -->
+  <nav class="tabs">
     <a
       href="#"
       :class="['tab', { active: selectedTab === tab }]"
@@ -26,8 +26,9 @@ const selectTab = (tab: string) => {
     >
       {{ tab }}
     </a>
-  </div>
-  <div class="tab-content">
+  </nav>
+
+  <div class="content">
     <WeatherInfo :city="selectedTab" />
   </div>
 </template>
@@ -70,5 +71,8 @@ const selectTab = (tab: string) => {
 }
 .tab.active:active {
   background-color: #aaa;
+}
+.content {
+  padding: 1rem;
 }
 </style>
