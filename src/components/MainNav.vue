@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import WeatherInfo from '../components/WeatherInfo.vue'
 
-const tabs = ['rio de janeiro', 'beijing', 'los angeles'] as const
+const tabs = ['denver', 'rio de janeiro', 'beijing', 'los angeles'] as const
 
 const emit = defineEmits(['update:selectedTab'])
 
-const selectedTab = ref('rio de janeiro')
+const selectedTab = ref('denver')
 
 const selectTab = (tab: string) => {
   selectedTab.value = tab
@@ -27,9 +28,7 @@ const selectTab = (tab: string) => {
     </a>
   </div>
   <div class="tab-content">
-    <!-- <slot :selectedTab="selectedTab"></slot> -->
-    <!-- <slot :selectedTab="selectedTab" :tabs="tabs"></slot> -->
-    <!-- WeatherInfo -->
+    <WeatherInfo :city="selectedTab" />
   </div>
 </template>
 
