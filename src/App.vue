@@ -1,24 +1,32 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import TheWelcome from './components/TheWelcome.vue'
+import MainNav from './components/MainNav.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <h1 class="heading">Simple Weather</h1>
+    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-    </div>
+    </div> -->
   </header>
 
   <main>
-    <TheWelcome />
+    <!-- <h1>Main is here</h1> -->
+    <MainNav />
   </main>
 </template>
 
 <style scoped>
-header {
+.heading {
+  font-size: 2.6rem;
+  font-weight: 500;
+  text-align: center;
+}
+/* header {
   line-height: 1.5;
 }
 
@@ -43,5 +51,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>

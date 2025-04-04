@@ -1,3 +1,7 @@
+<!-- TODO fill this out -->
+
+[ ] styles are on point
+
 # vue-getting-started
 
 This template should help get you started developing with Vue 3 in Vite.
