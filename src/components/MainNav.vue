@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 import WeatherInfo from '../components/WeatherInfo.vue'
 
-const tabs = ['denver', 'rio de janeiro', 'beijing', 'los angeles'] as const
+const tabs = ['rio de janeiro', 'beijing', 'los angeles'] as const
 
 const emit = defineEmits(['update:selectedTab'])
 
-const selectedTab = ref('denver')
+const selectedTab = ref('rio de janeiro')
 
 const selectTab = (tab: string) => {
   selectedTab.value = tab
@@ -19,12 +19,12 @@ const selectTab = (tab: string) => {
   <nav class="tabs">
     <a
       href="#"
-      :class="['tab', { active: selectedTab === tab }]"
+      :class="['tab', { selected: selectedTab === tab }]"
       v-for="(tab, index) in tabs"
       :key="index"
       @click="selectTab(tab)"
     >
-      {{ tab }}
+      {{ tab.toUpperCase() }}
     </a>
   </nav>
 
@@ -36,38 +36,30 @@ const selectTab = (tab: string) => {
 <style scoped>
 .tabs {
   display: flex;
-  gap: 1rem;
   margin-bottom: 1rem;
-  justify-content: center;
+  background-color: #f0f0f0;
+  overflow-x: auto;
 }
 .tab {
-  padding: 0.5rem 1rem;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+  padding: 1rem;
   text-decoration: none;
-  color: #333;
+  color: rgba(51, 51, 51, 0.7);
+  transition: box-shadow 0.2s ease-in-out;
+  font-weight: bold;
+  white-space: nowrap;
 }
 .tab:hover {
   background-color: #e0e0e0;
 }
-.tab:active {
-  background-color: #d0d0d0;
-}
 .tab.selected {
-  background-color: #ccc;
-  font-weight: bold;
-}
-.tab.selected:hover {
-  background-color: #bbb;
+  color: rgba(51, 51, 51, 1);
+  box-shadow: 0px -3px 0px rgba(255, 0, 0, 0.8) inset;
 }
 .tab.selected:active {
   background-color: #aaa;
 }
 .tab.active {
   background-color: #ccc;
-}
-.tab.active:hover {
-  background-color: #bbb;
 }
 .tab.active:active {
   background-color: #aaa;

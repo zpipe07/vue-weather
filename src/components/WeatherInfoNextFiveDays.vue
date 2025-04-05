@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import type { WeatherData, WeatherListItem } from '../types'
 
 const props = defineProps<{
-  data: WeatherData
+  data: WeatherData | null
+  isLoading: boolean
 }>()
 
-const nextFiveDays = ref(
-  props.data.list.reduce(
+const nextFiveDays = computed(() =>
+  props.data?.list.reduce(
     (
       acc: Record<
         string,
@@ -36,6 +37,8 @@ const nextFiveDays = ref(
 </script>
 
 <template>
+  <div v-if="isLoading" class="card loading" />
+
   <div v-if="data" class="card">
     <h2 class="heading">Next 5 days</h2>
     <ul v-if="data" class="list">
@@ -43,8 +46,8 @@ const nextFiveDays = ref(
         <img
           :src="'http://openweathermap.org/img/wn/' + item.icon + '@2x.png'"
           alt="Weather icon"
-          width="100"
-          height="100"
+          width="75"
+          height="75"
         />
         <div class="main">
           <h3>{{ item.day }}</h3>
@@ -63,6 +66,22 @@ const nextFiveDays = ref(
 .card {
   border-radius: 0.25rem;
   border: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+.card.loading {
+  animation: pulse 1.5s infinite;
+  min-height: 23rem;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    background-color: rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
 }
 .heading {
   border-bottom: 1px solid var(--color-border);

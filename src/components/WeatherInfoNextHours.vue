@@ -2,11 +2,14 @@
 import type { WeatherData } from '../types'
 
 defineProps<{
-  data: WeatherData
+  data: WeatherData | null
+  isLoading: boolean
 }>()
 </script>
 
 <template>
+  <div v-if="isLoading" class="card loading" />
+
   <div v-if="data" class="card">
     <h2 class="heading">Next hours</h2>
     <ul v-if="data" class="list">
@@ -15,8 +18,8 @@ defineProps<{
         <h4>{{ item.pop * 100 }}%</h4>
         <img
           :src="'http://openweathermap.org/img/wn/' + item.weather[0].icon + '@2x.png'"
-          width="100"
-          height="100"
+          width="75"
+          height="75"
         />
         <h4>{{ new Date(item.dt * 1000).toLocaleTimeString() }}</h4>
         <h4>{{ new Date(item.dt * 1000).toDateString() }}</h4>
@@ -29,6 +32,19 @@ defineProps<{
 .card {
   border-radius: 0.25rem;
   border: 1px solid var(--color-border);
+}
+.card.loading {
+  animation: pulse 1.5s infinite;
+  min-height: 23rem;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    background-color: rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
 }
 .heading {
   border-bottom: 1px solid var(--color-border);
