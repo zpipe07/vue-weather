@@ -69,7 +69,7 @@ defineProps<{
   border-right: none;
 }
 .precip {
-  color: rgba(0, 0, 255, 0.72);
+  color: #007bff;
 }
 .time {
   color: rgba(0, 0, 0, 0.5);
