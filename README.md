@@ -1,43 +1,28 @@
-<!-- TODO fill this out -->
+# Vue Weather App
 
-[ ] styles are on point
+[Visit the web app here](https://zpipe07.github.io/vue-weather/)
 
-# vue-getting-started
+## Notes
 
-This template should help get you started developing with Vue 3 in Vite.
+Since I haven't used Vue.js in several years, I had to reacquaint myself with it. I found it to be very intuitive.
 
-## Recommended IDE Setup
+There were some things that I didn't get to implement in the time limit:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Cache data responses; it probably isn't necessary to refetch data when navigating between tabs
+- Improve icon and description determination for "Next 5 days" component; the current implementation sets the icon and description based on the first hourly instance of the day
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Run the project
 
 ```sh
+# Install dependencies
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Compile and Hot-Reload for Development
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# Type-Check, Compile and Minify for Production
 npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# Lint with ESLint
 npm run lint
 ```
