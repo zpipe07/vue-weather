@@ -1,6 +1,6 @@
 # Vue Weather App
 
-[Visit the web app here](https://zpipe07.github.io/vue-weather/)
+[Visit live demo here](https://zpipe07.github.io/vue-weather/)
 
 ## Notes
 
@@ -8,8 +8,9 @@ Since I haven't used Vue.js in several years, I had to reacquaint myself with it
 
 There were some things that I didn't get to implement in the time limit:
 
-- Cache data responses; it probably isn't necessary to refetch data when navigating between tabs
-- Improve icon and description determination for "Next 5 days" component; the current implementation sets the icon and description based on the first hourly instance of the day
+- Move data fetching outside of `<WeatherInfo />` component into a composable.
+- Cache data responses; it probably isn't necessary to refetch data when navigating between tabs.
+- Improve icon and description determination for "Next 5 days" component; the current implementation sets the icon and description based on the first hourly instance of the day which is ok, but could be improved.
 
 ## Run the project
 
