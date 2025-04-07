@@ -17,13 +17,18 @@ const nextFiveDays = computed(() =>
       item: WeatherListItem,
     ) => {
       const key = item.dt_txt.split(' ')[0]
+      const dateOptions: Intl.DateTimeFormatOptions = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+      }
       if (!acc[key]) {
         acc[key] = {
           high: item.main.temp_max,
           low: item.main.temp_min,
           icon: item.weather[0].icon,
           description: item.weather[0].description,
-          day: new Date(item.dt * 1000).toDateString(),
+          day: new Date(item.dt_txt).toLocaleDateString('en-US', dateOptions),
         }
       } else {
         acc[key].high = Math.max(acc[key].high, item.main.temp_max)
@@ -51,7 +56,7 @@ const nextFiveDays = computed(() =>
         />
         <div class="main">
           <h3>{{ item.day }}</h3>
-          <h4>{{ item.description }}</h4>
+          <h4 class="description">{{ item.description }}</h4>
         </div>
         <div class="temps">
           <h4>{{ item.high.toFixed(0) }}°</h4>
@@ -69,6 +74,7 @@ const nextFiveDays = computed(() =>
   width: 100%;
   max-width: 28rem;
   margin: 0 auto;
+  background-color: var(--color-background);
 }
 .card.loading {
   animation: pulse 1.5s infinite;
@@ -77,10 +83,10 @@ const nextFiveDays = computed(() =>
 @keyframes pulse {
   0%,
   100% {
-    background-color: rgba(0, 0, 0, 0.025);
+    background-color: rgba(255, 255, 255, 0.4);
   }
   50% {
-    background-color: rgba(0, 0, 0, 0.075);
+    background-color: rgba(255, 255, 255, 0.6);
   }
 }
 .heading {
@@ -106,6 +112,9 @@ const nextFiveDays = computed(() =>
 .main {
   text-align: center;
   margin: 0 auto;
+}
+.description {
+  color: rgba(0, 0, 0, 0.5);
 }
 .temps {
   display: flex;

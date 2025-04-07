@@ -7,7 +7,7 @@ import MainNav from './components/MainNav.vue'
     <h1 class="heading">Simple Weather</h1>
   </header>
 
-  <main>
+  <main class="main">
     <MainNav />
   </main>
 </template>
@@ -21,5 +21,8 @@ import MainNav from './components/MainNav.vue'
 .heading {
   font-size: 1.5rem;
   font-weight: 500;
+}
+.main {
+  background-color: var(--vt-c-indigo);
 }
 </style>

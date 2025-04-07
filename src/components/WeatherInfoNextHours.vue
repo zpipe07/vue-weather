@@ -15,14 +15,13 @@ defineProps<{
     <ul v-if="data" class="list">
       <li class="item" v-for="(item, index) in data.list" :key="index">
         <h4>{{ item.main.temp.toFixed(0) }}°</h4>
-        <h4>{{ item.pop * 100 }}%</h4>
+        <h4 class="precip">{{ item.pop * 100 }}%</h4>
         <img
           :src="'http://openweathermap.org/img/wn/' + item.weather[0].icon + '@2x.png'"
           width="75"
           height="75"
         />
-        <h4>{{ new Date(item.dt * 1000).toLocaleTimeString() }}</h4>
-        <h4>{{ new Date(item.dt * 1000).toDateString() }}</h4>
+        <h4 class="time">{{ new Date(item.dt * 1000).toLocaleTimeString().replace(':00', '') }}</h4>
       </li>
     </ul>
   </div>
@@ -32,18 +31,19 @@ defineProps<{
 .card {
   border-radius: 0.25rem;
   border: 1px solid var(--color-border);
+  background-color: var(--color-background);
 }
 .card.loading {
   animation: pulse 1.5s infinite;
-  min-height: 23rem;
+  min-height: 18rem;
 }
 @keyframes pulse {
   0%,
   100% {
-    background-color: rgba(0, 0, 0, 0.025);
+    background-color: rgba(255, 255, 255, 0.4);
   }
   50% {
-    background-color: rgba(0, 0, 0, 0.075);
+    background-color: rgba(255, 255, 255, 0.6);
   }
 }
 .heading {
@@ -67,5 +67,11 @@ defineProps<{
 }
 .item:last-child {
   border-right: none;
+}
+.precip {
+  color: rgba(0, 0, 255, 0.72);
+}
+.time {
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>

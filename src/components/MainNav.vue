@@ -36,7 +36,6 @@ const selectTab = (tab: string) => {
 <style scoped>
 .tabs {
   display: flex;
-  margin-bottom: 1rem;
   background-color: #f0f0f0;
   overflow-x: auto;
 }
